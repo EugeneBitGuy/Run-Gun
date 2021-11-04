@@ -411,7 +411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 10
-  gravity: -20
+  commonGravity: 20
+  crouchTime: 0.5
+  crouchGravity: 500
 --- !u!143 &1185014638
 CharacterController:
   m_ObjectHideFlags: 0
