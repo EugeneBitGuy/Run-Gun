@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 defaultScale;
     [SerializeField] private float crouchTime;
     [SerializeField] private float crouchGravity;
+    [SerializeField] private int hp;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Crouch());
         }
+
+        if (hp <= 0)
+            GameController.GameOver();
         
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
@@ -53,5 +57,20 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = defaultScale;
         commonGravity -= crouchGravity;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+        if (hit.gameObject.tag == "Obstacle")
+        {
+            TakeDamage();
+            Destroy(hit.gameObject);
+        }
+    }
+
+    private void TakeDamage()
+    {
+        hp--;
     }
 }
