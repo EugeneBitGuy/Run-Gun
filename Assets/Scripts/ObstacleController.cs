@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    [SerializeField] private bool isDestroyable;
     [SerializeField] private int hp;
+    
     private void Update()
     {
-        if (hp <= 0)
+        if (isDestroyable && hp <= 0)
             Destroy(gameObject);
 
     }

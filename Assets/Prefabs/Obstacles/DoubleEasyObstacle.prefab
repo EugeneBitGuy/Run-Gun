@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6404032069992446583}
   m_Layer: 0
   m_Name: DoubleEasyObstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68171fbe738fd124e84a69ac06fda568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyable: 0
   hp: 0
 --- !u!1 &2452359025485139143
 GameObject:
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68171fbe738fd124e84a69ac06fda568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyable: 1
   hp: 1
 --- !u!1 &4117329764066626385
 GameObject:
@@ -259,4 +261,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68171fbe738fd124e84a69ac06fda568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyable: 1
   hp: 1
