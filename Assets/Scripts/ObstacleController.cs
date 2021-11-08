@@ -17,5 +17,6 @@ public class ObstacleController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        Debug.Log($"{gameObject.name} was shot!\n It is {(isDestroyable ? "destroyable" : "undestroayble")}\n Current hp is {hp}");
     }
 }

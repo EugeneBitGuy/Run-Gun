@@ -13,6 +13,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float crouchTime;
     [SerializeField] private float crouchGravity;
     [SerializeField] private int hp;
+    public int Hp 
+    {
+        get => hp;
+        set
+        {
+            hp = Mathf.Clamp(value, 0, int.MaxValue);
+            if (hp == 0)
+                GameController.Instance.GameOver();
+        }
+    }
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -29,8 +39,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Crouch());
         }
 
-        if (hp <= 0)
-            GameController.GameOver();
+        /*if (Hp <= 0)
+            GameController.Instance.GameOver();*/
         
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
@@ -52,11 +62,15 @@ public class PlayerController : MonoBehaviour
     {
         commonGravity += crouchGravity;
         transform.localScale = new Vector3(defaultScale.x, defaultScale.y * 0.5f, defaultScale.z);
+        controller.height /= 3;
+        GetComponent<CapsuleCollider>().height /= 3;
 
         yield return new WaitForSeconds(0.5f);
 
         transform.localScale = defaultScale;
         commonGravity -= crouchGravity;
+        controller.height *= 3;
+        GetComponent<CapsuleCollider>().height *= 3;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -71,6 +85,6 @@ public class PlayerController : MonoBehaviour
 
     private void TakeDamage()
     {
-        hp--;
+        Hp--;
     }
 }

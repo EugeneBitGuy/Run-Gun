@@ -21,7 +21,7 @@ public class BulletController : MonoBehaviour
         {
             if (hitInfo.collider.tag == "Obstacle")
             {
-                hitInfo.collider.GetComponent <ObstacleController> ().TakeDamage(damage);
+                hitInfo.collider.GetComponent <ObstacleController>().TakeDamage(damage);
             }
             Destroy(gameObject);
         }
