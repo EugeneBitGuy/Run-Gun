@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * (speed) * Time.deltaTime); //SpeedOfBullet = playerSpeed + inspectorSpeed ???
 
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, distance, whatIsSolid))
         {

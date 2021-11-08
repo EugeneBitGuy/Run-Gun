@@ -6,13 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 direction;
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float commonGravity;
     private Vector3 defaultScale;
     [SerializeField] private float crouchTime;
     [SerializeField] private float crouchGravity;
     [SerializeField] private int hp;
+    private float maxSpeed = 150;
     public int Hp 
     {
         get => hp;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         defaultScale = transform.localScale;
+        StartCoroutine(SpeedUp());
     }
 
     void Update()
@@ -38,9 +40,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Crouch());
         }
-
-        /*if (Hp <= 0)
-            GameController.Instance.GameOver();*/
         
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
@@ -86,5 +85,17 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage()
     {
         Hp--;
+    }
+
+    private IEnumerator SpeedUp()
+    {
+        yield return new WaitForSeconds(10);
+        if(speed < maxSpeed)
+        {
+            speed += 1.5f;
+            StartCoroutine(SpeedUp());
+        }
+        
+
     }
 }
