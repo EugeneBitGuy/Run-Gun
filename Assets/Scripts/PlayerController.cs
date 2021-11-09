@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private ShoterController shoterController;
     private CharacterController controller;
     private Vector3 direction;
     [SerializeField] private float speed;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float crouchGravity;
     [SerializeField] private int hp;
     private float maxSpeed = 150;
+    private bool isCrouching;
     public int Hp 
     {
         get => hp;
@@ -33,17 +35,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            shoterController.Shot();
+        }
         if (SwipeController.swipeUp && controller.isGrounded)
             Jump();
 
-        if (SwipeController.swipeDown)
+        if (SwipeController.swipeDown && !isCrouching)
         {
             StartCoroutine(Crouch());
         }
         
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
+        //Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
-        transform.position = targetPosition;
+        //transform.position = targetPosition;
     }
 
     void FixedUpdate()
@@ -59,17 +65,19 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator Crouch()
     {
+        isCrouching = true;
         commonGravity += crouchGravity;
         transform.localScale = new Vector3(defaultScale.x, defaultScale.y * 0.5f, defaultScale.z);
         controller.height /= 3;
         GetComponent<CapsuleCollider>().height /= 3;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1);
 
         transform.localScale = defaultScale;
         commonGravity -= crouchGravity;
         controller.height *= 3;
         GetComponent<CapsuleCollider>().height *= 3;
+        isCrouching = false;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

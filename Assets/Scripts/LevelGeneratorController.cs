@@ -30,7 +30,8 @@ public class LevelGeneratorController : MonoBehaviour
 
     private void SpawnRoad(int index)
     {
-        GameObject nextRoad = Instantiate(roads[index], transform.forward * spawnPos, transform.rotation);
+        GameObject nextRoad = Instantiate(roads[index], transform.forward * spawnPos, transform.rotation, transform);
+        nextRoad.transform.localPosition = transform.forward * spawnPos;
         usedRoads.Add(nextRoad);
         spawnPos += roadLength;
     }
