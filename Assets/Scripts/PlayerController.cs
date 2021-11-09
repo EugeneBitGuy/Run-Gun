@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage()
     {
         Hp--;
+        InGame_UI.Instance.UpdateHealthBar();
     }
 
     private IEnumerator SpeedUp()

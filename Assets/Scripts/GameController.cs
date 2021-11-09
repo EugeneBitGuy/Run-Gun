@@ -11,11 +11,11 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
     [SerializeField] private GameObject losePanel;
-    [SerializeField] private GameObject shotButton;
+    [SerializeField] private GameObject inGame_UI;
     void Start()
     {
         Time.timeScale = 1;
-        shotButton.SetActive(true);
+        inGame_UI.SetActive(true);
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
         losePanel.SetActive(true);
-        shotButton.SetActive(false);
+        inGame_UI.SetActive(false);
     }
 
     public void Restart()
