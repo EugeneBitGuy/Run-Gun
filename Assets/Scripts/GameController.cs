@@ -34,4 +34,9 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
