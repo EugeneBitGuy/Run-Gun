@@ -23,6 +23,13 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+        StartCoroutine(End());
+    }
+
+    private IEnumerator End()
+    {
+        
+        yield return new WaitForSeconds(2);
         Time.timeScale = 0;
         losePanel.SetActive(true);
         inGame_UI.SetActive(false);
