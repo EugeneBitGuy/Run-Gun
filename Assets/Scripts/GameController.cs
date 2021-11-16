@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
 
     public void GoToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 

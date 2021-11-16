@@ -723,12 +723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roads:
   - {fileID: 7040833358543451340, guid: 2bf5df20bc0a2534aad96f1a168619d5, type: 3}
-  - {fileID: 7877184787647743110, guid: 69bf478e6c03a6e42a6f19d2df9b794d, type: 3}
-  - {fileID: 1913878412955149595, guid: 0ff583de9d78070419b1caffce6fc394, type: 3}
-  - {fileID: 5913791267830308740, guid: 3ae4c4c4c552fb7429ffa699e9237058, type: 3}
-  - {fileID: 3455703515800233401, guid: 069455618371c4e4286df29227f13ef1, type: 3}
-  - {fileID: 1371672031226053558, guid: c8ea0ca3d7067014fb024161b3170e92, type: 3}
-  - {fileID: 5630593000963358252, guid: ad2141dde34af2a40a71fb21275eb26c, type: 3}
+  - {fileID: 8701414171281107790, guid: 6631be15fd83d4d40becab55b826e154, type: 3}
+  - {fileID: 8701414171281107790, guid: 6631be15fd83d4d40becab55b826e154, type: 3}
   player: {fileID: 2222178210649916307}
 --- !u!4 &457821235
 Transform:
